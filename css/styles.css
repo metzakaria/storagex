@@ -11837,7 +11837,19 @@ header.masthead .masthead-heading {
   border-radius: 20px 0px 0px 20px;
 }
 
-.testimonialcard .row span, h6{
+.testimonialcard .row span{
+  position: absolute;
+  padding-left: 210px;
+  font-family: Proxima Nova;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  padding-top: 20px;
+  color: #505050;
+}
+
+.testimonialcard .row h6{
   position: absolute;
   padding-left: 210px;
   font-family: Proxima Nova;
