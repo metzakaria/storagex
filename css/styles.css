@@ -10490,12 +10490,14 @@ header.masthead .header-banner {
   background-repeat: no-repeat;
   height: 100vh;
   position: relative;
+  height: 100vh;
+  background-size: contain;
 }
 
 header.masthead .text-banner {
   margin: 0;
   position: absolute;
-  top: 18rem;
+  top: 25rem;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 5%;
