@@ -1,3 +1,4 @@
+@if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3 || Auth::user()->role_id == 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6)
 <li class="nav-item">
     <a href="{{ route('home') }}"
        class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
@@ -5,8 +6,9 @@
         <p>Dashboard</p>
     </a>
 </li>
+@endif
 
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="#" class="nav-link" id="2">
         <i class="nav-icon fas fa-chart-pie"></i>
@@ -46,6 +48,7 @@
         </li>
     </ul>
 </li>
+@endif
 
 
 <li class="nav-item">
@@ -156,7 +159,7 @@
                 <p>Investments</p>
             </a>
         </li>
-        
+
         <li class="nav-item">
             <a href="{{ route('investmentAuctions.index') }}"
             class="nav-link {{ Request::is('investmentAuctions*') ? 'active' : '' }}">
@@ -166,7 +169,7 @@
         </li>
 
 
-        
+
     </ul>
 </li>
 

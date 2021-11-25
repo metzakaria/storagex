@@ -3,13 +3,13 @@
         <thead>
             <tr>
                 <th>Full Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Role Id</th>
-        <th>Is Active</th>
-        <th>Last Login</th>
-        <th>Remember Token</th>
+                <th>Phone</th>
+                <th>Email</th>
+                {{-- <th>Password</th> --}}
+                <th>Role</th>
+                <th>Is Active</th>
+                <th>Last Login</th>
+        {{-- <th>Remember Token</th> --}}
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -19,11 +19,11 @@
                 <td>{{ $users->full_name }}</td>
             <td>{{ $users->phone }}</td>
             <td>{{ $users->email }}</td>
-            <td>{{ $users->password }}</td>
+            {{-- <td>{{ $users->password }}</td> --}}
             <td>{{ $users->role_id }}</td>
-            <td>{{ $users->is_active }}</td>
+            <td>@if ($users->is_active==1) Yes @else No @endif</td>
             <td>{{ $users->last_login }}</td>
-            <td>{{ $users->remember_token }}</td>
+            {{-- <td>{{ $users->remember_token }}</td> --}}
                 <td width="120">
                     {!! Form::open(['route' => ['users.destroy', $users->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

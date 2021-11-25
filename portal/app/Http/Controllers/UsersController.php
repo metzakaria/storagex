@@ -6,9 +6,11 @@ use App\Http\Requests\CreateUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Users;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Auth;
 
 class UsersController extends AppBaseController
 {
@@ -24,6 +26,8 @@ class UsersController extends AppBaseController
         /** @var Users $users */
         $users = Users::paginate(10);
 
+
+
         return view('users.index')
             ->with('users', $users);
     }
@@ -35,6 +39,8 @@ class UsersController extends AppBaseController
      */
     public function create()
     {
+        $roles = UserRole::all(['role', 'id']);
+
         return view('users.create');
     }
 

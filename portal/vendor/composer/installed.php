@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-development',
-        'version' => 'dev-development',
+        'pretty_version' => 'dev-henry-works',
+        'version' => 'dev-henry-works',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '49974eecdca3e9e60cdda1eb42b9d0bc231bcae9',
+        'reference' => 'b545f7ddf1887f5bae3ae45caf4ba9bd20857e5e',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -485,12 +485,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-development',
-            'version' => 'dev-development',
+            'pretty_version' => 'dev-henry-works',
+            'version' => 'dev-henry-works',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '49974eecdca3e9e60cdda1eb42b9d0bc231bcae9',
+            'reference' => 'b545f7ddf1887f5bae3ae45caf4ba9bd20857e5e',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

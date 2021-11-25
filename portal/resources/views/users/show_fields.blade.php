@@ -18,11 +18,11 @@
     <p>{{ $users->email }}</p>
 </div>
 
-<!-- Password Field -->
+{{-- <!-- Password Field -->
 <div class="col-sm-12">
     {!! Form::label('password', 'Password:') !!}
     <p>{{ $users->password }}</p>
-</div>
+</div> --}}
 
 <!-- Role Id Field -->
 <div class="col-sm-12">
@@ -43,10 +43,10 @@
 </div>
 
 <!-- Remember Token Field -->
-<div class="col-sm-12">
+{{-- <div class="col-sm-12">
     {!! Form::label('remember_token', 'Remember Token:') !!}
     <p>{{ $users->remember_token }}</p>
-</div>
+</div> --}}
 
 </div>
 
