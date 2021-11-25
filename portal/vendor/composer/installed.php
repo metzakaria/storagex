@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '8.0.x-dev',
-        'version' => '8.0.9999999.9999999-dev',
+        'pretty_version' => 'dev-development',
+        'version' => 'dev-development',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b4bcddd6dde753d9ecbe817cad13372e50dd23a9',
+        'reference' => '49974eecdca3e9e60cdda1eb42b9d0bc231bcae9',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -485,12 +485,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '8.0.x-dev',
-            'version' => '8.0.9999999.9999999-dev',
+            'pretty_version' => 'dev-development',
+            'version' => 'dev-development',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b4bcddd6dde753d9ecbe817cad13372e50dd23a9',
+            'reference' => '49974eecdca3e9e60cdda1eb42b9d0bc231bcae9',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -1032,6 +1032,15 @@
             'install_path' => __DIR__ . '/../simplesoftwareio/simple-qrcode',
             'aliases' => array(),
             'reference' => '916db7948ca6772d54bb617259c768c9cdc8d537',
+            'dev_requirement' => false,
+        ),
+        'spatie/laravel-permission' => array(
+            'pretty_version' => '5.4.0',
+            'version' => '5.4.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'reference' => 'e54f376517f698e058c518f73703a0ee59b26521',
             'dev_requirement' => false,
         ),
         'swiftmailer/swiftmailer' => array(
