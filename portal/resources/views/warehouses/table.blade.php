@@ -1,4 +1,4 @@
-@php 
+@php
     $banks = DB::table('banks')->get()->pluck('bank_name','id')->prepend('Select a bank', '');
     $idtypes = DB::table('identity_types')->get()->pluck('identity_name','id')->prepend('Select a ID Type', '');
 @endphp
@@ -29,7 +29,9 @@
                         <a href="{{ route('warehouses.edit', [$warehouse->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
+                        @if(Auth::user()->role_id == 1)
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        @endif
                     </div>
                     {!! Form::close() !!}
                 </td>

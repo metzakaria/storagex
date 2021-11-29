@@ -1,3 +1,7 @@
+@php
+
+@endphp
+
 <div class="table-responsive">
     <table class="table" id="users-table">
         <thead>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Users;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Flash;
 use Response;
 use Auth;
@@ -53,10 +54,19 @@ class UsersController extends AppBaseController
      */
     public function store(CreateUsersRequest $request)
     {
-        $input = $request->all();
+        $userData = [
+            "full_name"=>$request->full_name,
+            "phone" => $request->phone,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+            "role_id"=> $request->role_id,
+            "is_active" => $request->is_active,
+            "last_login" => $request->last_login,
+            "remember_token" => $request->remember_token
+        ];
 
         /** @var Users $users */
-        $users = Users::create($input);
+        $users = Users::create($userData);
 
         Flash::success('Users saved successfully.');
 
@@ -124,7 +134,18 @@ class UsersController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        $users->fill($request->all());
+        $updateData = [
+            "full_name"=>$request->full_name,
+            "phone" => $request->phone,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+            "role_id"=> $request->role_id,
+            "is_active" => $request->is_active,
+            "last_login" => $request->last_login,
+            "remember_token" => $request->remember_token
+        ];
+
+        $users->fill( $updateData);
         $users->save();
 
         Flash::success('Users updated successfully.');

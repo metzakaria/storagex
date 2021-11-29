@@ -1,3 +1,7 @@
+@php
+    $roles = DB::table('user_roles')->get()->pluck('role', 'id')->prepend('Select a role');
+@endphp
+
 <!-- Full Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('full_name', 'Full Name:') !!}
@@ -25,7 +29,7 @@
 <!-- Role Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('role_id', 'Role Id:') !!}
-    {!! Form::number('role_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('role_id',$roles, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Is Active Field -->

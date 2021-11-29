@@ -52,6 +52,7 @@
 
 
 <li class="nav-item">
+
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>
@@ -60,6 +61,7 @@
         </p>
     </a>
     <ul class="nav nav-treeview" style="display: none;">
+        @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
         <li class="nav-item">
             <a href="{{ route('farmers.index') }}"
             class="nav-link {{ Request::is('farmers*') ? 'active' : '' }}">
@@ -67,6 +69,9 @@
                 <p>Farmers</p>
             </a>
         </li>
+        @endif
+
+        @if(Auth::user()->role_id == 1 )
         <li class="nav-item">
             <a href="{{ route('commodities.index') }}"
             class="nav-link {{ Request::is('commodities*') ? 'active' : '' }}">
@@ -74,6 +79,9 @@
                 <p>Commodities</p>
             </a>
         </li>
+        @endif
+
+        @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 5)
         <li class="nav-item">
             <a href="{{ route('warehouses.index') }}"
             class="nav-link {{ Request::is('warehouses*') ? 'active' : '' }}">
@@ -81,6 +89,8 @@
                 <p>Warehouses</p>
             </a>
         </li>
+        @endif
+        @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 5)
         <li class="nav-item">
             <a href="{{ route('farmerStorages.index') }}"
             class="nav-link {{ Request::is('farmerStorages*') ? 'active' : '' }}">
@@ -88,10 +98,11 @@
                 <p>Warehouse Receipt</p>
             </a>
         </li>
+        @endif
     </ul>
 </li>
 
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="{{ route('partners.index') }}"
        class="nav-link {{ Request::is('partners*') ? 'active' : '' }}">
@@ -99,8 +110,9 @@
         <p>Partners</p>
     </a>
 </li>
+@endif
 
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-chart-pie"></i>
@@ -133,9 +145,9 @@
         </li>
     </ul>
 </li>
+@endif
 
-
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-chart-pie"></i>
@@ -172,9 +184,10 @@
 
     </ul>
 </li>
+@endif
 
 
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-chart-pie"></i>
@@ -220,7 +233,9 @@
     </li>
     </ul>
 </li>
+@endif
 
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="{{ route('users.index') }}"
        class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
@@ -228,7 +243,9 @@
         <p>Stock Up</p>
     </a>
 </li>
+@endif
 
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="{{ route('billPayments.index') }}"
        class="nav-link {{ Request::is('billPayments*') ? 'active' : '' }}">
@@ -236,8 +253,9 @@
         <p>Bill Payments</p>
     </a>
 </li>
+@endif
 
-
+@if(Auth::user()->role_id == 1)
 <li class="nav-item">
     <a href="{{ route('users.index') }}"
        class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
@@ -245,6 +263,6 @@
         <p>Users</p>
     </a>
 </li>
-
+@endif
 
 
