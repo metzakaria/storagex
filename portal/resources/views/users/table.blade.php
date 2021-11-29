@@ -1,4 +1,7 @@
 @php
+    function getRoleName($roleid) {
+        return DB::table('user_roles')->where('id', $roleid)->value('role');
+    }
 
 @endphp
 
@@ -24,7 +27,7 @@
             <td>{{ $users->phone }}</td>
             <td>{{ $users->email }}</td>
             {{-- <td>{{ $users->password }}</td> --}}
-            <td>{{ $users->role_id }}</td>
+            <td>{{ getRoleName($users->role_id) }}</td>
             <td>@if ($users->is_active==1) Yes @else No @endif</td>
             <td>{{ $users->last_login }}</td>
             {{-- <td>{{ $users->remember_token }}</td> --}}
