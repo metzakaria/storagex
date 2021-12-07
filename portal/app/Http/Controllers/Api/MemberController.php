@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Member;
@@ -17,14 +16,14 @@ use App\Models\Util;
 use App\Models\Bank;
 use App\Models\MembershipFee;
 
-   
+
 class MemberController extends ApiController
 {
   /**
      * list single member by id
      */
     public function showById($id)
-    {   
+    {
         $member = Member::find($id);
         if($member){
             return $this->sendResponse($member, 'Successfully.');
@@ -36,7 +35,7 @@ class MemberController extends ApiController
      * list single member by userid
      */
     public function showByUserId($userid)
-    {   
+    {
         $member = Member::where("user_id",$userid)->first();
         if($member){
             return $this->sendResponse($member, 'Successfully.');
@@ -45,17 +44,17 @@ class MemberController extends ApiController
     }
 
     /**
-     * bank account validation 
+     * bank account validation
      */
     public function validateBankAccount(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
             'bank_id' =>  'required|exists:banks,id',
             'account_number' =>  'required|integer',
          ]);
-    
+
          if($validator->fails()){
-             return $this->sendError('Error validation', $validator->errors());       
+             return $this->sendError('Error validation', $validator->errors());
          }
         $bank = Bank::find($request->bank_id);
         $validate = [
@@ -82,9 +81,9 @@ class MemberController extends ApiController
            //"identity_type_id" =>"nullable|required_with:identity_image"
            //"identity_type_id" =>"nullable|required_with:identity_image"
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         //$input = $request->all();
@@ -107,13 +106,13 @@ class MemberController extends ApiController
                 }
                 return $this->sendResponse([], 'record updated successfully.');
             } else {
-                return $this->sendError('Error updating member'); 
+                return $this->sendError('Error updating member');
             }
         } catch (Exception $e) {
-            return $this->sendError('Error updating record ', $e->getMessage()); 
+            return $this->sendError('Error updating record ', $e->getMessage());
         }
     }
-   
+
 
 
 
@@ -123,31 +122,31 @@ class MemberController extends ApiController
     public function registerWithdrawalBank(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'member_id' =>  'required|exists:members,id', 
+            'member_id' =>  'required|exists:members,id',
             'bank_id' => 'required|exists:banks,id',
             'account_no' => 'required|max:10|min:10',
             'account_name' => 'required',
             'password' => 'required',
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         $model = Member::find($request['member_id']);
         if(!Member::grantAccess($model, $request['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
 
         //$input = $request->all();
         $success = [];
-        
+
         $model->bank_id = $request['bank_id'];
         $model->account_no = $request['account_no'];
         $model->account_name = $request['account_name'];
         //validate bank details here
         if(!Util::validateBank($model->bank_id, $model->account_no, $model->account_name )){
-            return $this->sendError('Bank detail is invalid');  
+            return $this->sendError('Bank detail is invalid');
         }
 
         if ($model->save()) {
@@ -156,36 +155,36 @@ class MemberController extends ApiController
             $success['account_name'] = $model->account_name;
             return $this->sendResponse($success, 'Bank updated successfully.');
         } else {
-            return $this->sendError('Error updating bank'); 
+            return $this->sendError('Error updating bank');
         }
     }
 
-    
+
      /**
      * member update debit card
      */
     public function registerPaymentDebitCard(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'member_id' =>  'required|exists:members,id', 
+            'member_id' =>  'required|exists:members,id',
             'card_no' => 'required|max:16|min:16',
             'expire' => 'required',
             'cvv' => 'required|min:3|max:3',
             'password' => 'required',
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         $model = Member::find($request['member_id']);
         if(!Member::grantAccess($model, $request['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
-        
+
         //validate bank details here
         if(!Util::validateDebitcard($model->card_no, $model->expire, $model->cvv )){
-            return $this->sendError('Bank detail is invalid');  
+            return $this->sendError('Bank detail is invalid');
         }
         $model = DebitCard::firstOrCreate([
             'member_id'     =>      $request['member_id'],
@@ -199,7 +198,7 @@ class MemberController extends ApiController
         if ($model) {
             return $this->sendResponse($model, 'Card pdated successfully.');
         } else {
-            return $this->sendError('Error updating card'); 
+            return $this->sendError('Error updating card');
         }
     }
 
@@ -208,7 +207,7 @@ class MemberController extends ApiController
      * show memberbership fee
      */
     public function showMembershipFee($member_id)
-    {   
+    {
         $membershipfee = MembershipFee::where("member_id",$member_id)->first();
         if($membershipfee){
             return $this->sendResponse($membershipfee, 'Successfully.');
@@ -218,23 +217,23 @@ class MemberController extends ApiController
 
 
     /**
-     * create or renew membership fee 
+     * create or renew membership fee
      */
     public function paymembershipFee(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'member_id' =>  'required|exists:members,id', 
+            'member_id' =>  'required|exists:members,id',
             'amount' => 'required',
             'password' => 'required',
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         $model = Member::find($request['member_id']);
         if(!Member::grantAccess($model, $request['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
         //check for payment here
         //if(payment()){}
@@ -246,12 +245,12 @@ class MemberController extends ApiController
         $membershipfee->start_date = date('Y-m-d');
         $membershipfee->end_date = $end = date('Y-m-d', strtotime('+1 years'));
         $membershipfee->save();
-        
+
 
         if ($membershipfee->save()) {
             return $this->sendResponse($membershipfee, 'Membership fee paid successfully.');
         } else {
-            return $this->sendError('Error paying membership fee '); 
+            return $this->sendError('Error paying membership fee ');
         }
     }
 

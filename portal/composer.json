@@ -22,7 +22,9 @@
         "laravel/ui": "3.0",
         "laravelcollective/html": "^6.2",
         "simplesoftwareio/simple-qrcode": "^4.2",
-        "spatie/laravel-permission": "^5.4"
+        "spatie/laravel-permission": "^5.4",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

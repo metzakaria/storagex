@@ -44,4 +44,4 @@ Route::any('{any}', function(){
     return response()->json(['status'=> false, 'message' => 'Page Not Found.'], 404);
 })->where('any', '.*');
 
-Route::resource('banks', App\Http\Controllers\API\BankAPIController::class);
+Route::resource('banks', App\Http\Controllers\Api\BankAPIController::class);

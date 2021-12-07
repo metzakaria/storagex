@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Eloquent as Model;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DateTime;
 
 /**
  * Class InvestmentProduct
@@ -36,7 +36,7 @@ class InvestmentProduct extends Model
     use HasFactory;
 
     public $table = 'investment_products';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -119,7 +119,7 @@ class InvestmentProduct extends Model
         'investors' => 'nullable|integer'
     ];
 
-    
+
     /**
      * get the count of investors
      */
@@ -151,7 +151,7 @@ class InvestmentProduct extends Model
             return "Yes";
         }
         return "No";
-    } 
+    }
 
     /**
      * get today percent
@@ -163,13 +163,13 @@ class InvestmentProduct extends Model
         return $interst_now;
     }
 
-    /** 
+    /**
      * calculate ROI per unit
      */
     public function unit_roi($start_now = false, $unit_amount = ""){
         $_interest = $this->unit_interest/100;
         if($start_now){
-            $_interest = $this->interest_now()/100; 
+            $_interest = $this->interest_now()/100;
         }
         $_unit_amt = $this->unit_amount;
         if($unit_amount!=""){
@@ -185,7 +185,7 @@ class InvestmentProduct extends Model
     public function duration($start_now = false){
         $start = new DateTime($this->start_date);
         if($start_now){
-            $start = new DateTime(date('Y-m-d'));  
+            $start = new DateTime(date('Y-m-d'));
         }
         $mature = new DateTime($this->mature_date);
         $interval = $mature->diff($start);
@@ -201,5 +201,5 @@ class InvestmentProduct extends Model
         $array['is_soldout'] = $this->is_soldout();
         return $array;
     }
-    
+
 }

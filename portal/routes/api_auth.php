@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BillsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MemberController;
@@ -54,3 +55,9 @@ Route::get('investment/getAuctionByInvestmentProduct/{investment_product_id}', [
 Route::post('investment/buyAuctionInvestment', [InvestmentController::class, 'buyAuctionInvestment']);
 Route::post('investment/transferInvestmentBalToSavingsBal', [InvestmentController::class, 'moveInvestmentBalToSavingsBal']);
 
+//bills
+
+Route::post('bills/buyAirtime', [BillsController::class, 'buyAirtime']);
+Route::get('bills/buyData', [BillsController::class, 'buyData']);
+Route::post('bills/buyUtilities', [BillsController::class, 'buyUtilities']);
+Route::post('bills/buyTvSubscription', [BillsController::class, 'buyTvSubscription']);
