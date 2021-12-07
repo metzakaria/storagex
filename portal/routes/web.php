@@ -24,13 +24,13 @@ Route::get('/validateStorage/{id}', [
     App\Http\Controllers\FarmerStorageController::class, 'validateStorage'
 ])->name('validateStorage');
 
-Route::middleware(['auth'])->group(function () { 
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+// });
 
-Route::get('/home', [
+Route::get('/', [
     HomeController::class, 'index'
 ])->name('home');
 
@@ -98,6 +98,8 @@ Route::resource('farmerStorages', App\Http\Controllers\FarmerStorageController::
 Route::resource('debitCards', App\Http\Controllers\DebitCardController::class);
 
 Route::resource('billPayments', App\Http\Controllers\BillPaymentController::class);
+
+Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
 
 Route::get('/generate', function (){
     \Illuminate\Support\Facades\Artisan::call('storage:link');

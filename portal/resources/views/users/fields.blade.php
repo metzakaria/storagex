@@ -28,7 +28,7 @@
 
 <!-- Role Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('role_id', 'Role Id:') !!}
+    {!! Form::label('role_id', 'Role:') !!}
     {!! Form::select('role_id',$roles, null, ['class' => 'form-control']) !!}
 </div>
 
@@ -43,10 +43,10 @@
 
 
 <!-- Last Login Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('last_login', 'Last Login:') !!}
     {!! Form::text('last_login', null, ['class' => 'form-control','id'=>'last_login']) !!}
-</div>
+</div> --}}
 
 @push('page_scripts')
     <script type="text/javascript">
@@ -59,7 +59,7 @@
 @endpush
 
 <!-- Remember Token Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('remember_token', 'Remember Token:') !!}
     {!! Form::text('remember_token', null, ['class' => 'form-control','maxlength' => 100,'maxlength' => 100]) !!}
-</div>
+</div> --}}

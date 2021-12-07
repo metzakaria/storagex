@@ -17,7 +17,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-   
+
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -26,7 +26,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3 id="farmer"></h3>
 
                 <p>Farmers </p>
               </div>
@@ -41,7 +41,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3 id="member"></h3>
 
                 <p>Members</p>
               </div>
@@ -56,7 +56,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3 id="receipt"></h3>
 
                 <p>Elec. Receipts</p>
               </div>
@@ -71,7 +71,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3 id="investor"></h3>
 
                 <p>Investors</p>
               </div>
@@ -93,7 +93,7 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    
+
                   </div>
                 </div>
               </div>
@@ -106,38 +106,10 @@
                       <th>User</th>
                       <th>Date</th>
                       <th>Status</th>
-                      <th>Reason</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                  <tbody id="member_table">
+
                   </tbody>
                 </table>
               </div>
@@ -151,3 +123,40 @@
     </section>
 </div>
 @endsection
+
+@push('page_scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            dashboardDataLoading();
+        });
+
+        function dashboardDataLoading(){
+
+            fetch(window.location.origin+"/dashboard/show")
+            .then(res=>res.json())
+            .then(data=>{
+                $('#farmer').html(data.data.farmer);
+                $('#member').html(data.data.member);
+                $('#investor').html(data.data.investment)
+                $('#receipt').html(data.data.receipt);
+                let table = ""
+                $.each(data.data.member_table, (key, value)=>{
+                    console.log(value)
+                    table += `
+                        <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.full_name}</td>
+                            <td>${value.created_at}</td>
+                            <td>${!value.is_verified ? 'Pending':'Approved'}</td>
+                        </tr>
+                    `
+
+                });
+                $('#member_table').append(table);
+
+            }).catch(error=>console.log(error));
+        }
+    </script>
+
+
+@endpush
