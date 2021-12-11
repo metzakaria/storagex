@@ -237,8 +237,8 @@
 
 @if(Auth::user()->role_id == 1)
 <li class="nav-item">
-    <a href="{{ route('users.index') }}"
-       class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+    <a href="{{ route('stockup.index') }}"
+       class="nav-link {{ Request::is('stockup*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-th"></i>
         <p>Stock Up</p>
     </a>
@@ -266,3 +266,10 @@
 @endif
 
 
+@push('page_scripts')
+
+    <script type="text/javascript">
+
+    </script>
+
+@endpush

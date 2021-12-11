@@ -101,6 +101,8 @@ Route::resource('billPayments', App\Http\Controllers\BillPaymentController::clas
 
 Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
 
+Route::resource('stockup', App\Http\Controllers\StockUpController::class);
+
 Route::get('/generate', function (){
     \Illuminate\Support\Facades\Artisan::call('storage:link');
     echo 'ok';
