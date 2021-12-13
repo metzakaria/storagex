@@ -69,7 +69,8 @@ class StockUpController extends Controller
     public function show($id)
     {
         //
-        return view('stockup.show');
+        $stockItem = StockupItem::where('id', $id)->first();
+        return view('stockup.show')->with('stockitem', $stockItem);
     }
 
     /**
@@ -81,7 +82,17 @@ class StockUpController extends Controller
     public function edit($id)
     {
         //
-        return view('stockup.edit');
+        $stockItem = StockupItem::where('id', $id)->first();
+
+        if(empty($stockItem)){
+
+            Flash::error('Stock Item not found');
+
+            return redirect(route('stockup.index'));
+
+        }
+
+        return view('stockup.edit')->with('stockitem', $stockItem);
     }
 
     /**
@@ -105,5 +116,18 @@ class StockUpController extends Controller
     public function destroy($id)
     {
         //
+        $stockItem = StockupItem::find($id);
+        if(empty($stockItem)){
+            Flash::error('Stock Item not found');
+
+            return redirect(route('stockup.index'));
+        }
+
+        $stockItem->delete();
+
+        Flash::success('Stock Item Deleted successfully.');
+
+        return redirect(route('stockup.index'));
+
     }
 }
