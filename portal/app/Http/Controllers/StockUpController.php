@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\StockUpItemRequests;
+
+use App\Models\StockupItem;
+
+use Flash;
 class StockUpController extends Controller
 {
     /**
@@ -15,7 +20,8 @@ class StockUpController extends Controller
     public function index()
     {
         //
-        return view('stockup.index');
+        $stockup = StockupItem::paginate(20);
+        return view('stockup.index')->with('stocks', $stockup);
     }
 
     /**
@@ -26,6 +32,7 @@ class StockUpController extends Controller
     public function create()
     {
         //
+        return view('stockup.create');
     }
 
     /**
@@ -34,9 +41,23 @@ class StockUpController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StockUpItemRequests $request)
     {
-        //
+
+        $input = $request->all();
+
+        $stockUpItem = StockupItem::create($input);
+
+        if ($request->hasFile('item_image')) {
+            $imageName = $stockUpItem->id.'.jpg';//.$request->photo->extension();
+            $request->photo->storeAs('public/images/stock_items', $imageName);
+            $stockUpItem->photo = $imageName;
+            $stockUpItem->save();
+        }
+
+        Flash::success('Stock Item Created successfully.');
+
+        return redirect(route('stockup.index'));
     }
 
     /**
@@ -48,6 +69,7 @@ class StockUpController extends Controller
     public function show($id)
     {
         //
+        return view('stockup.show');
     }
 
     /**
@@ -59,6 +81,7 @@ class StockUpController extends Controller
     public function edit($id)
     {
         //
+        return view('stockup.edit');
     }
 
     /**

@@ -237,11 +237,25 @@
 
 @if(Auth::user()->role_id == 1)
 <li class="nav-item">
-    <a href="{{ route('stockup.index') }}"
-       class="nav-link {{ Request::is('stockup*') ? 'active' : '' }}">
-       <i class="nav-icon fas fa-th"></i>
-        <p>Stock Up</p>
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-chart-pie"></i>
+        <p>
+         Stock Up
+        <i class="right fas fa-angle-left"></i>
+        </p>
     </a>
+    <ul class="nav nav-treeview" style="display: none;">
+        <li class="nav-item">
+            <a href="{{ route('stockup.index') }}"
+                class="nav-link {{ Request::is('stockup*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stock-Up Items</p>
+            </a>
+
+        </li>
+
+    </ul>
+
 </li>
 @endif
 
