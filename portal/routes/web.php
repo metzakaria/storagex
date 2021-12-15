@@ -34,6 +34,10 @@ Route::get('/', [
     HomeController::class, 'index'
 ])->name('home');
 
+Route::get('/home', [
+    HomeController::class, 'index'
+])->name('home');
+
 
 Route::resource('farmers', App\Http\Controllers\FarmerController::class);
 
@@ -102,6 +106,10 @@ Route::resource('billPayments', App\Http\Controllers\BillPaymentController::clas
 Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
 
 Route::resource('stockup', App\Http\Controllers\StockUpController::class);
+
+Route::resource('stockupMembers',  App\Http\Controllers\StockUpMemberController::class);
+
+Route::resource('stockupPurchases', App\Http\Controllers\StockUpPurchaseController::class);
 
 Route::get('/generate', function (){
     \Illuminate\Support\Facades\Artisan::call('storage:link');

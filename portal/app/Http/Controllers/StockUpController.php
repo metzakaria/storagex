@@ -102,9 +102,25 @@ class StockUpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StockUpItemRequests $request, $id)
     {
         //
+        $stockItem = StockupItem::find($id);
+
+        if(empty($stockItem)){
+            Flash::error('Stock Item not found');
+
+            return redirect(route('stockup.index'));
+        }
+
+        $stockItem->fill($request->all());
+        $stockItem->save();
+
+        Flash::success('Stock Item Updated successfully.');
+
+        return redirect(route('stockup.index'));
+
+
     }
 
     /**

@@ -254,6 +254,24 @@
 
         </li>
 
+        <li class="nav-item">
+            <a href="{{ route('stockupMembers.index') }}"
+                class="nav-link {{ Request::is('stockupMembers*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stock-Up Members</p>
+            </a>
+
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('stockupPurchases.index') }}"
+                class="nav-link {{ Request::is('stockupPurchases*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stock-Up Purchases</p>
+            </a>
+
+        </li>
+
     </ul>
 
 </li>

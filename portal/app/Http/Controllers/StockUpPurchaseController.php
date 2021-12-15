@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Farmer;
-use App\Models\Member;
-use App\Models\Investment;
-use App\Models\FarmerStorage;
 
-class DashboardCOntroller extends Controller
+class StockUpPurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +15,7 @@ class DashboardCOntroller extends Controller
     public function index()
     {
         //
+        return view('stockup_purchase.index');
     }
 
     /**
@@ -50,19 +47,7 @@ class DashboardCOntroller extends Controller
      */
     public function show($id)
     {
-        $farmer = Farmer::count();
-        $member = Member::count();
-        $investment = Investment::count();
-        $receipt = FarmerStorage::count();
-        $memberTable = Member::orderBy('created_at', 'DESC')->take(10)->get();
-
-        $data = ["farmer"=> $farmer,
-                "member"=> $member,
-                "investment"=> $investment,
-                "receipt" => $receipt,
-                "member_table"=>$memberTable
-            ];
-        return response()->json(["status"=>200,"message"=>"Success!!!","data"=>$data], 200);
+        //
     }
 
     /**
