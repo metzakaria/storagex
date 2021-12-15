@@ -28,7 +28,7 @@ class TargetSaving extends Model
     use HasFactory;
 
     public $table = 'target_savings';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -38,14 +38,17 @@ class TargetSaving extends Model
     public $fillable = [
         'name',
         'category_id',
-        'description',
+        'frequency',
         'target_amt',
-        'cur_amt',
-        'prev_amt',
+        'amount_to_save',
+        'default_payment_method',
         'yearly_interest',
         'start_date',
-        'member_id',
-        'is_current'
+        'preferred_time',
+        'end_date',
+        'cur_amt',
+        'prev_amt',
+        'member_id'
     ];
 
     /**
@@ -57,35 +60,20 @@ class TargetSaving extends Model
         'id' => 'integer',
         'name' => 'string',
         'category_id' => 'integer',
-        'description' => 'string',
+        'frequency' => 'string',
         'target_amt' => 'string',
+        'amount_to_save' => 'string',
         'cur_amt' => 'string',
         'prev_amt' => 'string',
         'yearly_interest' => 'string',
         'start_date' => 'date',
+        'preferred_time' => 'datetime:H:i',
+        'end_date' => 'date',
         'member_id' => 'integer',
-        'is_current' => 'boolean'
+        'is_current' => 'boolean',
+        'default_payment_method' => 'string',
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'name' => 'required|string|max:255',
-        'category_id' => 'nullable|integer',
-        'description' => 'nullable|string',
-        'target_amt' => 'nullable|string|max:20',
-        'cur_amt' => 'nullable|string|max:20',
-        'prev_amt' => 'nullable|string|max:20',
-        'yearly_interest' => 'nullable|string|max:20',
-        'start_date' => 'nullable',
-        'member_id' => 'required|integer',
-        'is_current' => 'required|boolean',
-        'created_at' => 'nullable',
-        'updated_at' => 'nullable'
-    ];
 
     /**
      * Get the category_id associated .
@@ -102,5 +90,5 @@ class TargetSaving extends Model
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
-    
+
 }
