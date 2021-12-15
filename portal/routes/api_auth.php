@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\API\BillsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\SavingController;
 use App\Http\Controllers\Api\InvestmentController;
+//use App\Http\Controllers\API\BillsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,6 +32,8 @@ Route::post('member/registerWithdrawalBank', [MemberController::class, 'register
 Route::post('member/registerPaymentDebitCard', [MemberController::class, 'registerPaymentDebitCard']);
 Route::post('member/paymembershipFee', [MemberController::class, 'paymembershipFee']);
 Route::get('member/getMembershipFee/{id}', [MemberController::class, 'showMembershipFee']);
+Route::get('member/getDebitCards', [MemberController::class, 'showDebitCards']);
+Route::get('member/transactionHistory', [MemberController::class, 'transactionHistory']);
 
 
 ///savings routes
@@ -45,6 +47,9 @@ Route::post('saving/fundRegularSavings', [SavingController::class, 'fundRegularS
 Route::post('saving/debitRegularSavings', [SavingController::class, 'DebitRegularSavings']);
 
 
+Route::post('saving/createTargetSavings', [SavingController::class, 'createTargetSavings']);
+
+
 ///Investment routes
 Route::get('investment/getInvestmentProducts', [InvestmentController::class, 'showInvestmentProducts']);
 Route::get('investment/getMyInvestments', [InvestmentController::class, 'showMyInvestments']);
@@ -54,10 +59,11 @@ Route::post('investment/auctionMyInvestment', [InvestmentController::class, 'auc
 Route::get('investment/getAuctionByInvestmentProduct/{investment_product_id}', [InvestmentController::class, 'showAuctionByInvestmentProduct']);
 Route::post('investment/buyAuctionInvestment', [InvestmentController::class, 'buyAuctionInvestment']);
 Route::post('investment/transferInvestmentBalToSavingsBal', [InvestmentController::class, 'moveInvestmentBalToSavingsBal']);
+//Route::post('bills/buyTvSubscription', [InvestmentController::class, 'buyTvSubscription']);
 
 //bills
 
-Route::post('bills/buyAirtime', [BillsController::class, 'buyAirtime']);
-Route::get('bills/buyData', [BillsController::class, 'buyData']);
-Route::post('bills/buyUtilities', [BillsController::class, 'buyUtilities']);
-Route::post('bills/buyTvSubscription', [BillsController::class, 'buyTvSubscription']);
+//Route::post('bills/buyAirtime', [BillsController::class, 'buyAirtime']);
+//Route::get('bills/buyData', [BillsController::class, 'buyData']);
+//Route::post('bills/buyUtilities', [BillsController::class, 'buyUtilities']);
+//Route::post('bills/buyTvSubscription', [BillsController::class, 'buyTvSubscription']);
