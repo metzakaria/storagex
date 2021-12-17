@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\StockupMembers;
+use Flash;
+
+
 class StockUpMemberController extends Controller
 {
     /**
@@ -15,7 +19,8 @@ class StockUpMemberController extends Controller
     public function index()
     {
         //
-        return view('stockup_members.index');
+        $stockMembers = StockupMembers::paginate(10);
+        return view('stockup_members.index')->with('stock_members',$stockMembers);
     }
 
     /**

@@ -12,7 +12,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('price_per_unit', 'Price Per Unit:') !!}
-    {!! Form::text('price_per_unit', null, ['class' => 'form-control','maxlength' => 250,'maxlength' => 250]) !!}
+    {!! Form::number('price_per_unit', null, ['class' => 'form-control','maxlength' => 250,'maxlength' => 250]) !!}
 </div>
 
 <div class="form-group col-sm-6">
@@ -22,7 +22,7 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('unit', 'Unit:') !!}
-    {!! Form::number('unit', null, ['class' => 'form-control','maxlength' => 250,'maxlength' => 250]) !!}
+    {!! Form::text('unit', null, ['class' => 'form-control','maxlength' => 250,'maxlength' => 250]) !!}
 </div>
 
 <div class="form-group col-sm-6">

@@ -1,5 +1,5 @@
 @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3 || Auth::user()->role_id == 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6)
-<li class="nav-item">
+<li class="nav-item is_active">
     <a href="{{ route('home') }}"
        class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -254,14 +254,6 @@
 
         </li>
 
-        <li class="nav-item">
-            <a href="{{ route('stockupMembers.index') }}"
-                class="nav-link {{ Request::is('stockupMembers*') ? 'active' : '' }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Stock-Up Members</p>
-            </a>
-
-        </li>
 
         <li class="nav-item">
             <a href="{{ route('stockupPurchases.index') }}"
@@ -301,6 +293,25 @@
 @push('page_scripts')
 
     <script type="text/javascript">
+        $(document).ready(function(){
+
+            // $(function(){
+            //     var url = window.location.href;
+            //     $('.nav-item a').filter(function() {
+            //         return this.href == url;
+            //     }).addClass('selected');
+
+            // });
+
+            // $(function() {
+            //     $('nav').on('click','.nav-item', function ( e ) {
+            //         e.preventDefault();
+            //         $(this).parents('nav').find('.is_active').removeClass('is_active').end().end().addClass('is_active');
+            //         $(activeTab).show();
+            //     });
+            // });
+
+        })
 
     </script>
 

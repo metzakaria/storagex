@@ -33,7 +33,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -48,7 +48,7 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -58,12 +58,12 @@
               <div class="inner">
                 <h3 id="receipt"></h3>
 
-                <p>Elec. Receipts</p>
+                <p>Electronic Receipts</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -78,7 +78,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -132,7 +132,11 @@
 
         function dashboardDataLoading(){
 
-            fetch(window.location.origin+"/dashboard/show")
+            let URL = window.location.origin;
+            if(URL !== "http://localhost:8000"){
+                URL = "https://portal.storagex.com.ng/public/"
+            }
+             fetch(window.location.origin+"/dashboard/show")
             .then(res=>res.json())
             .then(data=>{
                 $('#farmer').html(data.data.farmer);

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\StockupPurchase;
+
+use Flash;
+
 class StockUpPurchaseController extends Controller
 {
     /**
@@ -15,7 +19,8 @@ class StockUpPurchaseController extends Controller
     public function index()
     {
         //
-        return view('stockup_purchase.index');
+        $stockupPurchase = StockupPurchase::paginate(10);
+        return view('stockup_purchase.index')->with('stock_purchase', $stockupPurchase);
     }
 
     /**
@@ -48,6 +53,14 @@ class StockUpPurchaseController extends Controller
     public function show($id)
     {
         //
+        $stockupPurchase = StockupPurchase::where('id',$id)->first();
+        if(empty($stockupPurchase)){
+
+            Flash::error('No stock purchase found!');
+
+            return redirect(route('stockup_purchase.index'));
+        }
+        return view('stockup_purchase.show')->with('stock_purchase', $stockupPurchase);
     }
 
     /**
