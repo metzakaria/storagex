@@ -38,14 +38,20 @@
 
 <!-- Location Field -->
 <div class="form-group col-sm-6">
-    @php 
+    @php
         $location = DB::table('locations')->get()->pluck('name','id')->prepend('Select a location', '');
     @endphp
     {!! Form::label('location', 'Location:') !!}
     {!! Form::select('location', $location, null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255]) !!}
 </div>
 
-
+@push('page_scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // alert("ok")
+        });
+    </script>
+@endpush
 
 
 

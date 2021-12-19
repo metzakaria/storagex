@@ -1,3 +1,7 @@
+@php
+
+@endphp
+
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
@@ -5,19 +9,19 @@
 </div>
 
 <!-- State Id Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('state_id', 'State Id:') !!}
     {!! Form::number('state_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}
 
 <!-- Lga Id Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('lga_id', 'Lga Id:') !!}
     {!! Form::number('lga_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}
 
 <!-- Created Menber Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('created_menber', 'Created Menber:') !!}
+    {!! Form::label('created_menber', 'Created Member:') !!}
     {!! Form::number('created_menber', null, ['class' => 'form-control']) !!}
 </div>

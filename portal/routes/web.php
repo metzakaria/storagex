@@ -15,6 +15,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+use App\Http\Controllers\groupMsgSubController;
+
 
 
 Auth::routes();
@@ -110,6 +112,10 @@ Route::resource('stockup', App\Http\Controllers\StockUpController::class);
 Route::resource('stockupMembers',  App\Http\Controllers\StockUpMemberController::class);
 
 Route::resource('stockupPurchases', App\Http\Controllers\StockUpPurchaseController::class);
+
+Route::get('group_members/{id}', [groupMsgSubController::class, 'groupMember'])->name('group_members');
+
+Route::get('replies/{id}', [groupMsgSubController::class, 'messageReplies'])->name('replies');
 
 Route::get('/generate', function (){
     \Illuminate\Support\Facades\Artisan::call('storage:link');

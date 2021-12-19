@@ -197,22 +197,22 @@
         </p>
     </a>
     <ul class="nav nav-treeview" style="display: none;">
-    <li class="nav-item">
+    {{-- <li class="nav-item">
     <a href="{{ route('groupMembers.index') }}"
         class="nav-link {{ Request::is('groupMembers*') ? 'active' : '' }}">
         <i class="far fa-circle nav-icon"></i>
             <p>Group Members</p>
         </a>
-    </li>
+    </li> --}}
 
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a href="{{ route('groupMsgReplies.index') }}"
         class="nav-link {{ Request::is('groupMsgReplies*') ? 'active' : '' }}">
         <i class="far fa-circle nav-icon"></i>
             <p>Group Msg Replies</p>
         </a>
-    </li>
+    </li> --}}
 
 
     <li class="nav-item">

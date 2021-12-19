@@ -1,7 +1,12 @@
+@php
+    $groups = DB::table('groups')->get()->pluck('name', 'id')->prepend('Select group name');
+
+@endphp
+
 <!-- Group Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('group_id', 'Group Id:') !!}
-    {!! Form::number('group_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('group_id', 'Group:') !!}
+    {!! Form::select('group_id',$groups, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Message Field -->
