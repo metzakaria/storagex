@@ -21,7 +21,7 @@
 </div> --}}
 
 <!-- Created Menber Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('created_menber', 'Created Member:') !!}
     {!! Form::number('created_menber', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}

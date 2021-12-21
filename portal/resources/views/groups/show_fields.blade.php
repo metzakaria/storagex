@@ -1,3 +1,9 @@
+@php
+    function getLoginUserName($userID){
+        return DB::table('users')->where('id', $userID)->value('full_name');
+    }
+@endphp
+
 <!-- Name Field -->
 <div class="col-sm-12">
     {!! Form::label('name', 'Name:') !!}
@@ -5,7 +11,7 @@
 </div>
 
 <!-- State Id Field -->
-<div class="col-sm-12">
+{{-- <div class="col-sm-12">
     {!! Form::label('state_id', 'State Id:') !!}
     <p>{{ $group->state_id }}</p>
 </div>
@@ -14,11 +20,11 @@
 <div class="col-sm-12">
     {!! Form::label('lga_id', 'Lga Id:') !!}
     <p>{{ $group->lga_id }}</p>
-</div>
+</div> --}}
 
 <!-- Created Menber Field -->
 <div class="col-sm-12">
-    {!! Form::label('created_menber', 'Created Menber:') !!}
-    <p>{{ $group->created_menber }}</p>
+    {!! Form::label('created_menber', 'Created Member:') !!}
+    <p>{{ getLoginUserName($group->created_menber) }}</p>
 </div>
 

@@ -17,10 +17,23 @@
         </div>
     </div>
 </section>
+@php
+
+    $header="";
+    foreach($replies as $key=>$value){
+        $header = $value['group_msg_id'];
+    }
+    $Header = DB::table('group_msgs')->where('id', $header)->value('message');
+
+@endphp
 
 <div class="content px-3">
     <div class="card">
-
+        <div class="card-header">
+            <h3>
+                {{$Header}}
+            </h3>
+        </div>
         <div class="card-body">
             <div class="row">
                 @include('group_msgs.replies.reply')

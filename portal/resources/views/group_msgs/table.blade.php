@@ -5,6 +5,9 @@ function getGroupName($groupID){
 
 }
 
+
+
+
 @endphp
 
 <div class="table-responsive">
@@ -35,9 +38,9 @@ function getGroupName($groupID){
                         <a href="{{ route('groupMsgs.edit', [$groupMsg['id']]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
-                        <a href="{{ route('replies', [$groupMsg['id']]) }}" class='btn btn-default btn-xs'>
+                        {{-- <a href="{{ route('replies', [$groupMsg['id']]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-comment"></i>
-                        </a>
+                        </a> --}}
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

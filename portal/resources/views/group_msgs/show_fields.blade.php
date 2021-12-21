@@ -25,5 +25,29 @@ function getGroupName($groupID){
     <p>{{ $groupMsg->created_menber }}</p>
 </div>
 
+<div class="col-sm-12">
+    {!! Form::label('replies', 'Replies:') !!}
+    @php
+        function getMemberFullname($memberID){
+            return DB::table('members')->where('id', $memberID)->value('full_name');
+        }
+
+        $replies = DB::table('group_msg_replies')->where('group_msg_id', $groupMsg->id)->get();
+    @endphp
+
+     @foreach($replies as $reply)
+            <div class="row">
+                <div class="col-sm-8">
+                    <p  > {{ $reply->replied_message }}</p>
+                </div>
+                <div class="col-sm-2">{{getMemberFullname( $reply->replied_member )}}</div>
+                <div class="col-sm-2">{{$reply->created_at }}</div>
+
+            </div>
+    @endforeach
+
+
+</div>
+
 
 

@@ -9,6 +9,7 @@ use App\Models\Group;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Auth;
 
 class GroupController extends AppBaseController
 {
@@ -47,7 +48,12 @@ class GroupController extends AppBaseController
      */
     public function store(CreateGroupRequest $request)
     {
-        $input = $request->all();
+        // $input = $request->all();
+
+        $input = [
+            'name' => $request->name,
+            'created_menber'=> Auth::id()
+        ];
 
         /** @var Group $group */
         $group = Group::create($input);
