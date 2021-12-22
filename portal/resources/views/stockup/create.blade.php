@@ -16,7 +16,7 @@
         @include('adminlte-templates::common.errors')
 
         <div class="card">
-            {!! Form::open(['route' => 'stockup.store']) !!}
+            {!! Form::open(['route' => 'stockup.store', 'files' => true ]) !!}
                 <div class="card-body">
 
                     <div class="row">

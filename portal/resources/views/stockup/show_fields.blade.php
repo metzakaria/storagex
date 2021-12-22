@@ -33,7 +33,9 @@
     </div>
 
     <div class="col-sm-12">
-        @php $img = ($stockitem->item_image) ? $stockitem->item_image : 'no_pix.jpg'; @endphp
+        @php
+            $img = ($stockitem->item_image) ? $stockitem->item_image : 'no_pix.jpg';
+        @endphp
         <img src="{{ asset('storage/images/stock_items/'.$img) }}" width="800" height="150" />
     </div>
 

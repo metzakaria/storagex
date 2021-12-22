@@ -78,8 +78,23 @@
     </div>
 
     <div class="col-sm-12">
-        {!! Form::label('expect_delivery_at', 'Expect Delivery At:') !!}
-        <p>{{ $stock_purchase->expect_delivery_at}}</p>
+        {!! Form::label('expect_delivery_date', 'Expect Delivery Date:') !!}
+        <p>{{ $stock_purchase->expect_delivery_date}}</p>
+    </div>
+
+    <div class="col-sm-12">
+        {!! Form::label('expect_delivery_time', 'Expect Delivery Time:') !!}
+        <p>{{ $stock_purchase->expect_delivery_time}}</p>
+    </div>
+
+    <div class="col-sm-12">
+        {!! Form::label('delivery_note', ' Delivery Note:') !!}
+        <p>{{ $stock_purchase->delivery_note}}</p>
+    </div>
+
+    <div class="col-sm-12">
+        {!! Form::label('shipping_fee', ' Shipping Fee:') !!}
+        <p>{{ $stock_purchase->shipping_fee}}</p>
     </div>
 
 </div>

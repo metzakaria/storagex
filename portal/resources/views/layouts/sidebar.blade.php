@@ -15,3 +15,21 @@
     </div>
 
 </aside>
+
+
+@push('page_scripts')
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+           $('.nav-link').each(function(){
+                if($(this).hasClass('active')){
+                    $(this).parents('.nav-item').addClass('menu-open').children(':first-child').addClass('active');
+                }
+            })
+
+
+        })
+
+    </script>
+
+@endpush

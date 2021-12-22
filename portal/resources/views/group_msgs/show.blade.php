@@ -27,5 +27,46 @@
             </div>
 
         </div>
+        <hr>
+
+        <div class="card">
+            <div class="card-header">
+                <h5> Message  Replies</h5>
+            </div>
+            <div class="card-body">
+                @php
+                    function getMemberFullname($memberID){
+                        return DB::table('members')->where('id', $memberID)->value('full_name');
+                    }
+
+                    $replies = DB::table('group_msg_replies')->where('group_msg_id', $groupMsg->id)->get();
+                @endphp
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Message</th>
+                            <th>Member Name</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($replies as $reply)
+                        <tr>
+                            <td>
+                                 {{ $reply->replied_message }}
+                            </td>
+                            <td>{{ getMemberFullname( $reply->replied_member )}}</td>
+                            <td> {{\Carbon\Carbon::parse($reply->created_at)->format('d/m/Y') }}</td>
+
+                        </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
     </div>
 @endsection

@@ -1,5 +1,5 @@
 @php
-      function getMemberFullname($memberID){
+    function getMemberFullname($memberID){
         return DB::table('members')->where('id', $memberID)->value('full_name');
     }
 @endphp

@@ -1,5 +1,5 @@
 @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3 || Auth::user()->role_id == 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6)
-<li class="nav-item is_active">
+<li class="nav-item ">
     <a href="{{ route('home') }}"
        class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -17,7 +17,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
         <li class="nav-item">
             <a href="{{ route('members.index') }}"
             class="nav-link {{ Request::is('members*') ? 'active' : '' }}">
@@ -60,7 +60,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
         @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
         <li class="nav-item">
             <a href="{{ route('farmers.index') }}"
@@ -121,7 +121,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
         <li class="nav-item">
             <a href="{{ route('regularSavings.index') }}"
             class="nav-link {{ Request::is('regularSavings*') ? 'active' : '' }}">
@@ -156,7 +156,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
         <li class="nav-item">
             <a href="{{ route('investmentProducts.index') }}"
             class="nav-link {{ Request::is('investmentProducts*') ? 'active' : '' }}">
@@ -196,7 +196,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
     {{-- <li class="nav-item">
     <a href="{{ route('groupMembers.index') }}"
         class="nav-link {{ Request::is('groupMembers*') ? 'active' : '' }}">
@@ -244,7 +244,7 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview" style="display: none;">
+    <ul class="nav nav-treeview" >
         <li class="nav-item">
             <a href="{{ route('stockup.index') }}"
                 class="nav-link {{ Request::is('stockup*') ? 'active' : '' }}">
@@ -290,29 +290,13 @@
 @endif
 
 
-@push('page_scripts')
+{{-- @push('page_scripts')
 
     <script type="text/javascript">
         $(document).ready(function(){
-
-            // $(function(){
-            //     var url = window.location.href;
-            //     $('.nav-item a').filter(function() {
-            //         return this.href == url;
-            //     }).addClass('selected');
-
-            // });
-
-            // $(function() {
-            //     $('nav').on('click','.nav-item', function ( e ) {
-            //         e.preventDefault();
-            //         $(this).parents('nav').find('.is_active').removeClass('is_active').end().end().addClass('is_active');
-            //         $(activeTab).show();
-            //     });
-            // });
 
         })
 
     </script>
 
-@endpush
+@endpush --}}

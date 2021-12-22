@@ -49,9 +49,12 @@ class StockUpController extends Controller
         $stockUpItem = StockupItem::create($input);
 
         if ($request->hasFile('item_image')) {
-            $imageName = $stockUpItem->id.'.jpg';//.$request->photo->extension();
-            $request->photo->storeAs('public/images/stock_items', $imageName);
-            $stockUpItem->photo = $imageName;
+            $filenameWithExt = $request->file('item_image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('item_image')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('item_image')->storeAs('public/images/stock_items',$fileNameToStore);
+            $stockUpItem->item_image = $fileNameToStore ;
             $stockUpItem->save();
         }
 
