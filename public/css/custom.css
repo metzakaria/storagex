@@ -1,0 +1,39 @@
+.mypagination{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+    background-color: #f7f7f7f5;
+    border: 1px solid #eaeaea;
+}
+.mypagination nav{
+    float:right;
+    position: relative;
+}
+
+.table thead {
+    background: none;
+    background-color: rgb(255 255 255 / 52%) !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+}
+.table thead tr th {
+    color: #424040;
+}
+
+.page-container {
+    background: #f3f3f3;
+}
+
+.au-btn--blue {
+    background: #4272d7;
+    color:#ffffff !important;
+}
+
+.detail-view{
+    width: 100% !important;
+}
+.detail-view div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #e4e2e2;
+}
