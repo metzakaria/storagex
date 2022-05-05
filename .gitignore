@@ -15,5 +15,6 @@ yarn-error.log
 .phpunit.result.cache
 .env
 .env.backup
+.DS_Store
 .phpunit.result.cache
 fields_sample.json
