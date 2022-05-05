@@ -1,5 +1,9 @@
 @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3 || Auth::user()->role_id == 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6)
+<<<<<<< HEAD
 <li class="nav-item ">
+=======
+<li class="nav-item">
+>>>>>>> emmybranch
     <a href="{{ route('home') }}"
        class="nav-link {{ Request::is('home*') ? 'active' : '' }}">
        <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -17,7 +21,11 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+<<<<<<< HEAD
     <ul class="nav nav-treeview" >
+=======
+    <ul class="nav nav-treeview" style="display: none;">
+>>>>>>> emmybranch
         <li class="nav-item">
             <a href="{{ route('members.index') }}"
             class="nav-link {{ Request::is('members*') ? 'active' : '' }}">
@@ -27,7 +35,11 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('membershipFees.index') }}"
+<<<<<<< HEAD
             class="nav-link {{ Request::is('membershipFees.*') ? 'active' : '' }}">
+=======
+            class="nav-link {{ Request::is('membershipFees*') ? 'active' : '' }}">
+>>>>>>> emmybranch
             <i class="far fa-circle nav-icon"></i>
                 <p>Membership Fees</p>
             </a>
@@ -60,7 +72,11 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+<<<<<<< HEAD
     <ul class="nav nav-treeview" >
+=======
+    <ul class="nav nav-treeview" style="display: none;">
+>>>>>>> emmybranch
         @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4)
         <li class="nav-item">
             <a href="{{ route('farmers.index') }}"
@@ -121,7 +137,11 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+<<<<<<< HEAD
     <ul class="nav nav-treeview" >
+=======
+    <ul class="nav nav-treeview" style="display: none;">
+>>>>>>> emmybranch
         <li class="nav-item">
             <a href="{{ route('regularSavings.index') }}"
             class="nav-link {{ Request::is('regularSavings*') ? 'active' : '' }}">
@@ -138,7 +158,11 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('regularSavingsTransactions.index') }}"
+<<<<<<< HEAD
             class="nav-link {{ Request::is('regularSavingsTransactions.*') ? 'active' : '' }}">
+=======
+            class="nav-link {{ Request::is('regularSavingsTransactions*') ? 'active' : '' }}">
+>>>>>>> emmybranch
             <i class="far fa-circle nav-icon"></i>
                 <p>Regular Savings Transactions</p>
             </a>
@@ -156,7 +180,11 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+<<<<<<< HEAD
     <ul class="nav nav-treeview" >
+=======
+    <ul class="nav nav-treeview" style="display: none;">
+>>>>>>> emmybranch
         <li class="nav-item">
             <a href="{{ route('investmentProducts.index') }}"
             class="nav-link {{ Request::is('investmentProducts*') ? 'active' : '' }}">
@@ -196,23 +224,39 @@
         <i class="right fas fa-angle-left"></i>
         </p>
     </a>
+<<<<<<< HEAD
     <ul class="nav nav-treeview" >
     {{-- <li class="nav-item">
+=======
+    <ul class="nav nav-treeview" style="display: none;">
+    <li class="nav-item">
+>>>>>>> emmybranch
     <a href="{{ route('groupMembers.index') }}"
         class="nav-link {{ Request::is('groupMembers*') ? 'active' : '' }}">
         <i class="far fa-circle nav-icon"></i>
             <p>Group Members</p>
         </a>
+<<<<<<< HEAD
     </li> --}}
 
 
     {{-- <li class="nav-item">
+=======
+    </li>
+
+
+    <li class="nav-item">
+>>>>>>> emmybranch
         <a href="{{ route('groupMsgReplies.index') }}"
         class="nav-link {{ Request::is('groupMsgReplies*') ? 'active' : '' }}">
         <i class="far fa-circle nav-icon"></i>
             <p>Group Msg Replies</p>
         </a>
+<<<<<<< HEAD
     </li> --}}
+=======
+    </li>
+>>>>>>> emmybranch
 
 
     <li class="nav-item">
@@ -237,6 +281,7 @@
 
 @if(Auth::user()->role_id == 1)
 <li class="nav-item">
+<<<<<<< HEAD
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>
@@ -266,6 +311,13 @@
 
     </ul>
 
+=======
+    <a href="{{ route('users.index') }}"
+       class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+       <i class="nav-icon fas fa-th"></i>
+        <p>Stock Up</p>
+    </a>
+>>>>>>> emmybranch
 </li>
 @endif
 
@@ -290,6 +342,7 @@
 @endif
 
 
+<<<<<<< HEAD
 {{-- @push('page_scripts')
 
     <script type="text/javascript">
@@ -300,3 +353,5 @@
     </script>
 
 @endpush --}}
+=======
+>>>>>>> emmybranch

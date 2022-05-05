@@ -865,6 +865,70 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
+            "name": "emmadedayo/laravel-vtpass",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/emmadedayo/laravel-vtpass.git",
+                "reference": "7504699242c22427f1564e1fc459c5ca392196fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/emmadedayo/laravel-vtpass/zipball/7504699242c22427f1564e1fc459c5ca392196fd",
+                "reference": "7504699242c22427f1564e1fc459c5ca392196fd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5|~6|~7|~8"
+            },
+            "require-dev": {
+                "facade/ignition": "^2.5",
+                "mockery/mockery": "^1.4.4",
+                "phpunit/phpunit": "^9.5.10",
+                "sempro/phpunit-pretty-print": "dev-develop"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Emmadedayo\\VtPass\\VTPassServiceProvider"
+                    ],
+                    "aliases": {
+                        "Emmadedayo": "Emmadedayo\\Vtpass\\Facades\\Vtpass"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Emmadedayo\\VtPass\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adenagbe Emmanuel",
+                    "email": "emmadenagbe@gmail.com"
+                }
+            ],
+            "homepage": "https://github.com/emmadedayo/laravel-vtpass",
+            "keywords": [
+                "Nigeria",
+                "Vtpass",
+                "airtime top up",
+                "bills",
+                "php",
+                "vtu"
+            ],
+            "support": {
+                "issues": "https://github.com/emmadedayo/laravel-vtpass/issues",
+                "source": "https://github.com/emmadedayo/laravel-vtpass/tree/1.0.0"
+            },
+            "time": "2021-12-21T10:49:23+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.4.1",
             "source": {

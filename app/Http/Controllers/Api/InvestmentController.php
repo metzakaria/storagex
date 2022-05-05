@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Models\BillPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Models\Member;
 use App\Models\InvestmentProduct;
@@ -18,11 +20,12 @@ use Illuminate\Support\Facades\DB;
 class InvestmentController extends ApiController
 {
     
+
     /**
      * get list of investment products
      */
     public function showInvestmentProducts(Request $request)
-    {   
+    {
         $investmentProducts = InvestmentProduct::latest();
         if($request["name"]){
             $investmentProducts->where('name','LIKE','%'.$request["name"].'%');
@@ -45,16 +48,10 @@ class InvestmentController extends ApiController
      * get list of my investment
      */
     public function showMyInvestments(Request $request)
-    {   
-        $investment = Investment::latest();
+    {
+        $investment = Investment::where('member_id',Auth::user()->member->id)->latest();
         if($request["name"]){
             //$investment->where('name','LIKE','%'.$request["name"].'%');
-        }
-       
-        if($request["member_id"]){
-            $investment->where('member_id',$request["member_id"]);
-        }else{
-            return $this->sendError('member_id is required'); 
         }
         $investment = $investment->get();
        return $this->sendResponse($investment, 'Successfully.');
@@ -65,25 +62,25 @@ class InvestmentController extends ApiController
     * get summary of new investment
     */
     public function showInvestmentSummary(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
-            'invest_product_id' => 'required|exists:investment_products,id', 
+            'invest_product_id' => 'required|exists:investment_products,id',
             'buying_units' => 'required'
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         $investment_product = InvestmentProduct::find($request['invest_product_id']);
         $response = [
-            'start_date'        =>    $investment_product->start_date, 
-            'mature_date'       =>    $investment_product->mature_date, 
+            'start_date'        =>    $investment_product->start_date,
+            'mature_date'       =>    $investment_product->mature_date,
             'buying_units'      =>    $request['buying_units'],
             'buying_amount'     =>    ($request['buying_units']*$investment_product->unit_amount),
             'buying_date'       =>    date('Y-m-d'),
-            'buying_return'     =>    ($request['buying_units']*$investment_product->unit_roi(true)), 
-            'buying_interest'   =>    $investment_product->interest_now(),   
+            'buying_return'     =>    round($request['buying_units']*$investment_product->unit_roi(true)),
+            'buying_interest'   =>    round($investment_product->interest_now()),
         ];
        return $this->sendResponse($response, 'Successfully.');
     }
@@ -93,30 +90,31 @@ class InvestmentController extends ApiController
     * auction my investment
     */
     public function auctionMyInvestment(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
-            'investment_id' => 'required|exists:investments,id', 
+            'investment_id' => 'required|exists:investments,id',
             'qty_offer' => 'required',
             'unit_amount' => 'required',
             'offer_close_at' => 'required',
             'password' => 'required'
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError($validator->errors()->first(), $validator->errors());
         }
 
         $input = $request->all();
-        if(!Util::validateDate($input['offer_close_at'],'Y-m-d H:i:s')){
-            return $this->sendError('Invalid offer close date format.. allow fomat is Y-m-d h:i:s');       
+        $data =  Carbon::parse($input['offer_close_at'])->format('Y-m-d h:i:s');
+        if(!Util::validateDate($data,'Y-m-d H:i:s')){
+            return $this->sendError('Invalid offer close date format.. allow fomat is Y-m-d h:i:s');
         }
-        
+
         $investment = Investment::find($input['investment_id']);
         //validate member cridential
         if(!Member::grantAccess($investment->member, $input['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
-        
+
         $input['invest_product_id'] = $investment->invest_product_id;
         $input['total_amount']      = $input['qty_offer'] * $input['unit_amount'];
         $auctioned = InvestmentAuction::create($input);
@@ -132,33 +130,33 @@ class InvestmentController extends ApiController
     public function buyInvestmentProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'invest_product_id' => 'required|exists:investment_products,id', 
-            'member_id' => 'required|exists:members,id', 
+            'invest_product_id' => 'required|exists:investment_products,id',
+            'member_id' => 'required|exists:members,id',
             'password' => 'required',
             'qty_bought' => 'required',
             'amt_bought' => 'required',
             'pay_method' => 'required',
             't_n_c' => 'required',
         ]);
-   
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
         if($request['t_n_c']!='1'){
-            return $this->sendError('You must accept the terms and condition of this investment');       
+            return $this->sendError('You must accept the terms and condition of this investment');
         }
-        
+
         $input = $request->all();
         $member = Member::find($input['member_id']);
         if(!Member::grantAccess($member, $input['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
 
         $investment = Investment::create($input);
         if($investment){
             return $this->sendResponse($investment, 'Investment created successfully.');
         }
-        return $this->sendError('Error adding adding investment'); 
+        return $this->sendError('Error adding adding investment');
     }
 
 
@@ -167,7 +165,7 @@ class InvestmentController extends ApiController
      * get list of auction investment
      */
     public function showAuctionByInvestmentProduct($investment_product_id)
-    {   
+    {
        $auction_investment = InvestmentAuction::where('invest_product_id',$investment_product_id)->get();
        return $this->sendResponse($auction_investment, 'Successfully.');
     }
@@ -178,30 +176,30 @@ class InvestmentController extends ApiController
     public function buyAuctionInvestment(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'investment_auction_id' => 'required|exists:investment_auctions,id', 
-            'boughtby_member' => 'required|exists:members,id', 
+            'investment_auction_id' => 'required|exists:investment_auctions,id',
+            'boughtby_member' => 'required|exists:members,id',
             'password' => 'required',
             'total_amount' => 'required',
             'pay_method' => 'required',
             't_n_c' => 'required',
         ]);
-       
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
         if($request['t_n_c']!='1'){
-            return $this->sendError('You must accept the terms and condition of this investment');       
+            return $this->sendError('You must accept the terms and condition of this investment');
         }
 
         $input = $request->all();
         $member = Member::find($input['boughtby_member']);
         if(!Member::grantAccess($member, $input['password'])){
-            return $this->sendError('Invalid password entered');  
+            return $this->sendError('Invalid password entered');
         }
-       
-        
+
+
         if(!$member->debitWallet($input['total_amount'])){
-            return $this->sendError('Error charging your account'); 
+            return $this->sendError('Error charging your account');
         }
 
         $success = [];
@@ -225,39 +223,38 @@ class InvestmentController extends ApiController
                     't_n_c'                     =>      $input['t_n_c'],
                     'payment_method'            =>      $input['pay_method'],
                 ]);
-            
                 $success =  $investment;
             });
 
              return $this->sendResponse($success, 'Investment bought successfully.');
 
         } catch (Exception $e) {
-            return $this->sendError('Error buying auctioned investment', $e->getMessage()); 
+            return $this->sendError('Error buying auctioned investment', $e->getMessage());
         }
 
     }
-    
+
     /**
      * investment withdrawal
      */
     public function moveInvestmentBalToSavingsBal(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'investment_id' => 'required|exists:investments,id', 
+            'investment_id' => 'required|exists:investments,id',
             'password' => 'required',
             'security_ans' =>'required'
         ]);
-       
+
         if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
+            return $this->sendError('Error validation', $validator->errors());
         }
 
         $input = $request->all();
         $member = Member::find($input['member_id']);
         if(!Member::grantAccess($member, $input['password'], $input['security_ans'])){
-            return $this->sendError('Invalid password or security answer entered');  
+            return $this->sendError('Invalid password or security answer entered');
         }
-       
+
 
         $success = [];
         try{
@@ -293,10 +290,10 @@ class InvestmentController extends ApiController
                 return $this->sendResponse($success['data'], 'Investment bought successfully.');
             }
             return $this->sendError('Error withdrawing investment');
-            
+
 
         } catch (Exception $e) {
-            return $this->sendError('Error buying auctioned investment', $e->getMessage()); 
+            return $this->sendError('Error buying auctioned investment', $e->getMessage());
         }
 
     }

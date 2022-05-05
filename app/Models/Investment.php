@@ -125,6 +125,7 @@ class Investment extends Model
     /**
      * add extra attribute for view
      */
+<<<<<<< HEAD
     public function toArray()
     {
         $array = parent::toArray();
@@ -139,4 +140,30 @@ class Investment extends Model
         return $array;
     }
     
+=======
+     
+    protected $appends = ['investment'];
+    
+    public function getInvestmentAttribute(){
+        
+        $db = InvestmentProduct::where('id',$this->invest_product_id)->get();
+        return $db;
+        
+    }
+    
+    // public function toArray()
+    // {
+    //     $array = parent::toArray();
+    //     $array['product_name'] = $this->investor_product->name;
+    //     $array['product_description'] = $this->investor_product->description;
+    //     $array['product_image'] = $this->investor_product->image_file;
+    //     $array['product_unit_interest'] = $this->investor_product->unit_interest;
+    //     $array['product_unit_price'] = $this->investor_product->unit_amount;
+    //     $array['product_soldout'] = $this->investor_product->is_soldout();
+    //     $array['product_unit_startdate'] = $this->investor_product->start_date;
+    //     $array['product_unit_enddate'] = $this->investor_product->end_date;
+    //     return $array;
+    // }
+    
+>>>>>>> emmybranch
 }

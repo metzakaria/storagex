@@ -92,7 +92,11 @@ class RegularSavingsTransaction extends Model
     /**
      * add to ballance
      */
+<<<<<<< HEAD
     public static function addFundToBalance(RegularSavingTransaction $trnx){
+=======
+    public static function addFundToBalance(RegularSavingsTransaction $trnx){
+>>>>>>> emmybranch
         //$trnx = RegularSavingTransaction::find($id);
         try{
             DB::transaction(function() use ($trnx)  {
@@ -117,7 +121,11 @@ class RegularSavingsTransaction extends Model
      /**
      * debit to ballance
      */
+<<<<<<< HEAD
     public static function debitBalance(RegularSavingTransaction $trnx){
+=======
+    public static function debitBalance(RegularSavingsTransaction $trnx){
+>>>>>>> emmybranch
         //$trnx = RegularSavingTransaction::find($id);
         try{
             DB::transaction(function() use ($trnx)  {

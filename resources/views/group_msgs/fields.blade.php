@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @php
     $groups = DB::table('groups')->get()->pluck('name', 'id')->prepend('Select group name');
 
@@ -7,6 +8,12 @@
 <div class="form-group col-sm-6">
     {!! Form::label('group_id', 'Group:') !!}
     {!! Form::select('group_id',$groups, null, ['class' => 'form-control']) !!}
+=======
+<!-- Group Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('group_id', 'Group Id:') !!}
+    {!! Form::number('group_id', null, ['class' => 'form-control']) !!}
+>>>>>>> emmybranch
 </div>
 
 <!-- Message Field -->
@@ -19,4 +26,8 @@
 <div class="form-group col-sm-6">
     {!! Form::label('created_menber', 'Created Menber:') !!}
     {!! Form::number('created_menber', null, ['class' => 'form-control']) !!}
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> emmybranch

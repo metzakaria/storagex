@@ -28,7 +28,11 @@ class TargetSaving extends Model
     use HasFactory;
 
     public $table = 'target_savings';
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> emmybranch
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -38,6 +42,7 @@ class TargetSaving extends Model
     public $fillable = [
         'name',
         'category_id',
+<<<<<<< HEAD
         'description',
         'target_amt',
         'cur_amt',
@@ -46,6 +51,19 @@ class TargetSaving extends Model
         'start_date',
         'member_id',
         'is_current'
+=======
+        'frequency',
+        'target_amt',
+        'amount_to_save',
+        'default_payment_method',
+        'yearly_interest',
+        'start_date',
+        'preferred_time',
+        'end_date',
+        'cur_amt',
+        'prev_amt',
+        'member_id'
+>>>>>>> emmybranch
     ];
 
     /**
@@ -57,12 +75,19 @@ class TargetSaving extends Model
         'id' => 'integer',
         'name' => 'string',
         'category_id' => 'integer',
+<<<<<<< HEAD
         'description' => 'string',
         'target_amt' => 'string',
+=======
+        'frequency' => 'string',
+        'target_amt' => 'string',
+        'amount_to_save' => 'string',
+>>>>>>> emmybranch
         'cur_amt' => 'string',
         'prev_amt' => 'string',
         'yearly_interest' => 'string',
         'start_date' => 'date',
+<<<<<<< HEAD
         'member_id' => 'integer',
         'is_current' => 'boolean'
     ];
@@ -86,6 +111,15 @@ class TargetSaving extends Model
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
+=======
+        'preferred_time' => 'datetime:H:i',
+        'end_date' => 'date',
+        'member_id' => 'integer',
+        'is_current' => 'boolean',
+        'default_payment_method' => 'string',
+    ];
+
+>>>>>>> emmybranch
 
     /**
      * Get the category_id associated .
@@ -102,5 +136,9 @@ class TargetSaving extends Model
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> emmybranch
 }

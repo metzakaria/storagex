@@ -31,7 +31,11 @@ class UserController extends ApiController
         ]);
    
         if($validator->fails()){
+<<<<<<< HEAD
             return $this->sendError('Error validation', $validator->errors());       
+=======
+            return $this->sendError($validator->errors()->first(), $validator->errors());       
+>>>>>>> emmybranch
         }
         
         $success = [];
@@ -94,7 +98,11 @@ class UserController extends ApiController
         ]);
    
         if($validator->fails()){
+<<<<<<< HEAD
             return $this->sendError('Error validation', $validator->errors());       
+=======
+            return $this->sendError($validator->errors()->first(), $validator->errors());       
+>>>>>>> emmybranch
         }
         $input = $request->all();
         $user = User::find($input['user_id']);
