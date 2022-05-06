@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\DB;
 
 class InvestmentController extends ApiController
 {
-    
 
     /**
      * get list of investment products
@@ -223,6 +222,7 @@ class InvestmentController extends ApiController
                     't_n_c'                     =>      $input['t_n_c'],
                     'payment_method'            =>      $input['pay_method'],
                 ]);
+
                 $success =  $investment;
             });
 
@@ -297,5 +297,6 @@ class InvestmentController extends ApiController
         }
 
     }
+
 
 }

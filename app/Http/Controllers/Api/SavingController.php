@@ -2,27 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
-<<<<<<< HEAD
-=======
 use App\Models\TargetSaving;
 use App\Models\TargetSavingCat;
->>>>>>> emmybranch
 use Illuminate\Support\Facades\Config;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\SavingType;
 use App\Models\RegularSaving;
-<<<<<<< HEAD
-use App\Models\RegularSavingTransaction;
-use App\Models\Member;
-
-=======
 use App\Models\RegularSavingsTransaction;
 use App\Models\Member;
 use App\Models\TargetSavingsTransaction;
 use App\Models\DebitCard;
 use Illuminate\Support\Facades\Auth;
->>>>>>> emmybranch
 
 class SavingController extends ApiController
 {
@@ -30,11 +21,7 @@ class SavingController extends ApiController
      * get saving type
      */
     public function showSavingsType()
-<<<<<<< HEAD
-    {   
-=======
     {
->>>>>>> emmybranch
         $savings_type = SavingType::all();
         return $this->sendResponse($savings_type, 'Successfully.');
 
@@ -44,11 +31,7 @@ class SavingController extends ApiController
      * get saving frequency
      */
     public function showSavingsFrequencies()
-<<<<<<< HEAD
-    {   
-=======
     {
->>>>>>> emmybranch
         $savings_frequency = Config::get('global.savings_frequency');
         return $this->sendResponse($savings_frequency, 'Successfully.');
 
@@ -58,30 +41,18 @@ class SavingController extends ApiController
      * get payment method
      */
     public function showPaymentMethod()
-<<<<<<< HEAD
-    {   
-=======
     {
->>>>>>> emmybranch
         $payment_method = Config::get('global.payment_method');
         return $this->sendResponse($payment_method, 'Successfully.');
 
     }
 
     /**
-<<<<<<< HEAD
-     * get savings category 
-     */
-    public function showSavingsCategories()
-    {   
-        $savings_category = Config::get('global.savings_category');
-=======
      * get savings category
      */
     public function showSavingsCategories()
     {
         $savings_category = TargetSavingCat::all();
->>>>>>> emmybranch
         return $this->sendResponse($savings_category, 'Successfully.');
 
     }
@@ -96,36 +67,16 @@ class SavingController extends ApiController
             'amount' => 'required',
             'default_payment_method' => 'required',
         ]);
-<<<<<<< HEAD
-   
-        if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
-        }
-        
-=======
 
         if($validator->fails()){
             return $this->sendError($validator->errors()->first(), $validator->errors());
         }
 
->>>>>>> emmybranch
         $input = $request->all();
         $regular_saving = RegularSaving::create($input);
         if($regular_saving){
             return $this->sendResponse($regular_saving, 'Savings created successfully.');
         }
-<<<<<<< HEAD
-        return $this->sendError('Error creating regular savings'); 
-      
-    }
-
-    /**
-     * get regular savings transactions 
-     */
-    public function showRegularSavingsTransactions($member_id)
-    {   
-        $transactions = RegularSavingTransaction::where("member_id",$member_id)->get();
-=======
         return $this->sendError('Error creating regular savings');
 
     }
@@ -136,7 +87,6 @@ class SavingController extends ApiController
     public function showRegularSavingsTransactions()
     {
         $transactions = RegularSavingsTransaction::where("member_id",Auth::user()->member->id)->get();
->>>>>>> emmybranch
         return $this->sendResponse($transactions, 'Successfully.');
     }
 
@@ -146,26 +96,11 @@ class SavingController extends ApiController
     public function fundRegularSavings(Request $request)
     {
         $validator = Validator::make($request->all(), [
-<<<<<<< HEAD
-            'member_id' => 'required|exists:members,id', 
-=======
             'member_id' => 'required|exists:members,id',
->>>>>>> emmybranch
             'password' => 'required',
             'amount' => 'required',
             'pay_method' => 'required',
         ]);
-<<<<<<< HEAD
-   
-        if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
-        }
-        
-        $input = $request->all();
-        $member = Member::find($input['member_id']);
-        if(!Member::grantAccess($member, $input['password'])){
-            return $this->sendError('Invalid password or security answer');  
-=======
 
         if($validator->fails()){
             return $this->sendError('Error validation', $validator->errors());
@@ -175,20 +110,10 @@ class SavingController extends ApiController
         $member = Member::find($input['member_id']);
         if(!Member::grantAccess($member, $input['password'])){
             return $this->sendError('Invalid password or security answer');
->>>>>>> emmybranch
         }
 
         $input["dr_cr"] = "CR";
         $input["description"] = "Wallet Funding from ATM card";
-<<<<<<< HEAD
-        $regular_saving_fund = RegularSavingTransaction::create($input);
-        RegularSavingTransaction::addFundToBalance($regular_saving_fund);
-        if($regular_saving_fund){
-            return $this->sendResponse($regular_saving_fund, 'Fund added successfully.');
-        }
-        return $this->sendError('Error adding fund to regular savings'); 
-      
-=======
         $regular_saving_fund = RegularSavingsTransaction::create($input);
         RegularSavingsTransaction::addFundToBalance($regular_saving_fund);
         if($regular_saving_fund){
@@ -196,7 +121,6 @@ class SavingController extends ApiController
         }
         return $this->sendError('Error adding fund to regular savings');
 
->>>>>>> emmybranch
     }
 
      /**
@@ -205,30 +129,11 @@ class SavingController extends ApiController
     public function DebitRegularSavings(Request $request)
     {
         $validator = Validator::make($request->all(), [
-<<<<<<< HEAD
-            'member_id' => 'required|exists:members,id', 
-=======
             'member_id' => 'required|exists:members,id',
->>>>>>> emmybranch
             'password' => 'required',
             'amount' => 'required',
             'Security_ans' => 'required',
         ]);
-<<<<<<< HEAD
-   
-        if($validator->fails()){
-            return $this->sendError('Error validation', $validator->errors());       
-        }
-        
-        $input = $request->all();
-        $member = Member::find($input['member_id']);
-        if(!Member::grantAccess($member, $input['password'], $input['Security_ans'])){
-            return $this->sendError('Invalid password or security answer');  
-        }
-
-        if($member->cur_bal <= $input['amount']){
-            return $this->sendError('Insuficient amound in saving account'); 
-=======
 
         if($validator->fails()){
             return $this->sendError($validator->errors()->first(), $validator->errors()->first());
@@ -242,19 +147,10 @@ class SavingController extends ApiController
 
         if($member->cur_bal <= $input['amount']){
             return $this->sendError('Insuficient amound in saving account');
->>>>>>> emmybranch
         }
 
         $input["dr_cr"] = "DR";
         $input["description"] = "Withdrawal from Savings account to bank account";
-<<<<<<< HEAD
-        $regular_saving_debit = RegularSavingTransaction::create($input);
-        RegularSavingTransaction::debitBalance($regular_saving_debit);
-        if($regular_saving_debit){
-            return $this->sendResponse($regular_saving_debit, 'Debit successful.');
-        }
-        return $this->sendError('Error adding fund to regular savings'); 
-=======
         $regular_saving_debit = RegularSavingsTransaction::create($input);
         RegularSavingsTransaction::debitBalance($regular_saving_debit);
         if($regular_saving_debit){
@@ -306,6 +202,5 @@ class SavingController extends ApiController
         }
         return $this->sendError('Error creating regular savings');
 
->>>>>>> emmybranch
     }
 }
