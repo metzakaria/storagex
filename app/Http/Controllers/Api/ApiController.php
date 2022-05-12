@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller as Controller;
 class ApiController extends Controller
 {
     /**
-     * success response method. we added file this
+     * success response method. we added file this n
      *
      * @return \Illuminate\Http\Response
      */
