@@ -679,15 +679,6 @@ CREATE TABLE `members` (
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `full_name`, `state_id`, `lga_id`, `photo`, `email`, `mobile`, `address`, `security_question`, `security_ans`, `bvn`, `auth_code`, `bank_id`, `bank_name`, `account_no`, `account_name`, `is_verified`, `dob`, `identity_type_id`, `identity_image`, `is_active`, `is_deleted`, `referral_code`, `cur_bal`, `prev_bal`, `user_id`, `recipient_code`, `created_at`, `updated_at`, `cur_invest_bal`, `prev_invest_bal`, `storagex_bank_id`, `storagex_acct_no`, `has_membership`, `disable_wallet_bal`) VALUES
-(3, 'Test', NULL, NULL, 'https://sandbox.storagex.com.ng/storage/app/public/images/members/3.jpg', 'emmanzley@gmail.com', '000000999', 'hhhh', 'maintain', 'maintain', '22222222', '2303', 999992, 'Paycom', '8103141424', 'Emmanuel  Adenagbe', 0, '2022-4-20', NULL, 'https://sandbox.storagex.com.ng/storage/app/public/images/members/3.jpg', 1, 0, 'DWFOX', '483370', '484870', 3, 'RCP_0ljv1zpvqycg7ld', '2022-04-15 19:33:00', NULL, '0', '0', NULL, NULL, '1', 1),
-(4, 'DPO', NULL, NULL, NULL, 'testerdaps@gmail.com', NULL, NULL, 'Your Boss', 'Zach', '56328929928', '2651', 44, 'Access Bank', '0100666231', 'ADEDAPO JOSEPH ADELEYE', 0, '2022-4-17', NULL, 'https://sandbox.storagex.com.ng/storage/app/public/images/members/4.jpg', 1, 0, 'TIZKH', '37000', '38000', 4, 'RCP_gf4tnlestokiwq5', '2022-04-17 09:13:03', NULL, '0', '0', NULL, NULL, '0', 0),
-(5, 'Vicky', NULL, NULL, NULL, 'testerdaps1@gmail.com', NULL, NULL, NULL, NULL, NULL, '7645', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 1, 0, 'ALUB1', '0', '0', 5, NULL, '2022-04-17 17:28:04', NULL, '0', '0', NULL, NULL, '0', 0),
-(6, 'Emeka Nwachinemere', NULL, NULL, NULL, 'nwachinemere.emeka@gmail.com', NULL, NULL, NULL, NULL, NULL, '3899', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 1, 0, 'IK2LA', '0', '0', 6, NULL, '2022-04-17 21:07:15', NULL, '0', '0', NULL, NULL, '0', 0),
-(7, 'moses pay', NULL, NULL, NULL, 'moses@gmail.com', NULL, NULL, NULL, NULL, NULL, '6188', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 1, 0, 'QRIGL', '0', '0', 7, NULL, '2022-04-19 14:35:12', NULL, '0', '0', NULL, NULL, '0', 0),
-(8, 'zaks', NULL, NULL, 'https://sandbox.storagex.com.ng/storage/app/public/images/members/8.jpg', 'metzakaria@gmail.com', '08069335842', '9 Nathan street', 'what is ur pass', 'zak', '2583685241', '7196', 35, 'Wema Bank', '0232106976', 'MOHAMMED ZAKARI', 0, '2022-4-28', NULL, 'https://sandbox.storagex.com.ng/storage/app/public/images/members/8.jpg', 1, 0, '6K9US', '46500', '47000', 8, 'RCP_lmibhivarrx6jrh', '2022-04-19 14:35:55', NULL, '0', '0', NULL, NULL, '1', 0),
-(9, 'Emmanuel Adenagbe', NULL, NULL, NULL, 'emmanzley@yahoo.com', NULL, NULL, NULL, NULL, NULL, '3119', 999992, 'Paycom', '08103141424', 'Emmanuel  Adenagbe', 0, NULL, NULL, NULL, 1, 0, 'DDZ6E', '5000', '0', 9, 'RCP_0ljv1zpvqycg7ld', '2022-04-20 20:46:25', NULL, '0', '0', NULL, NULL, '0', 0);
-
 -- --------------------------------------------------------
 
 --
