@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\SavingController;
 use App\Http\Controllers\Api\InvestmentController;
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\Api\BillsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,9 +16,8 @@ use App\Http\Controllers\Api\BillsController;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
-|
+| add.
 */
-
 
 
 ///user routes
