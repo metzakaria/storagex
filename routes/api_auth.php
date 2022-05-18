@@ -5,11 +5,8 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\SavingController;
 use App\Http\Controllers\Api\InvestmentController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Api\StockController;
 use App\Http\Controllers\Api\BillsController;
->>>>>>> emmybranch
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,25 +25,17 @@ Route::post('user/changePassword', [UserController::class, 'changePassword']);
 Route::get('user/getuserById/{id}', [UserController::class, 'show']);
 
 ///member routes
-<<<<<<< HEAD
-Route::get('member/getMemberById/{id}', [MemberController::class, 'showById']);
-=======
 Route::get('member/getMemberById', [MemberController::class, 'showById']);
->>>>>>> emmybranch
 Route::get('member/getMemberByUserId/{user_id}', [MemberController::class, 'showByUserId']);
 Route::post('member/updateMember/{id}', [MemberController::class, 'updateMember']);
 Route::post('member/validateBankAccount', [MemberController::class, 'validateBankAccount']);
 Route::post('member/registerWithdrawalBank', [MemberController::class, 'registerWithdrawalBank']);
 Route::post('member/registerPaymentDebitCard', [MemberController::class, 'registerPaymentDebitCard']);
 Route::post('member/paymembershipFee', [MemberController::class, 'paymembershipFee']);
-<<<<<<< HEAD
-Route::get('member/getMembershipFee/{id}', [MemberController::class, 'showMembershipFee']);
-=======
 Route::get('member/getMembershipFee', [MemberController::class, 'showMembershipFee']);
 Route::get('member/getDebitCards', [MemberController::class, 'showDebitCards']);
 Route::get('transaction/transactionHistory', [MemberController::class, 'transactionHistory']);
 Route::post('member/disabledWallet', [MemberController::class, 'disabledWallet']);
->>>>>>> emmybranch
 
 
 ///savings routes
@@ -55,23 +44,16 @@ Route::post('saving/creatRegularSaving', [SavingController::class, 'createRegula
 Route::get('saving/getSavingFrequencies', [SavingController::class, 'showSavingsFrequencies']);
 Route::get('saving/getPaymentMethod', [SavingController::class, 'showPaymentMethod']);
 Route::get('saving/getSavingCategories', [SavingController::class, 'showSavingsCategories']);
-<<<<<<< HEAD
-Route::get('saving/getRegularSavingTransactions/member_id/{member_id}', [SavingController::class, 'showRegularSavingsTransactions']);
-=======
 Route::get('saving/getRegularSavingTransactions', [SavingController::class, 'showRegularSavingsTransactions']);
->>>>>>> emmybranch
 Route::post('saving/fundRegularSavings', [SavingController::class, 'fundRegularSavings']);
 Route::post('saving/debitRegularSavings', [SavingController::class, 'DebitRegularSavings']);
 
 
-<<<<<<< HEAD
-=======
 Route::post('saving/createTargetSavings', [SavingController::class, 'createTargetSavings']);
 Route::get('saving/getTargetSavings', [SavingController::class, 'getTargetSavings']);
 Route::get('saving/getTAmount', [SavingController::class, 'getCurrentSavingsAmount']);
 
 
->>>>>>> emmybranch
 ///Investment routes
 Route::get('investment/getInvestmentProducts', [InvestmentController::class, 'showInvestmentProducts']);
 Route::get('investment/getMyInvestments', [InvestmentController::class, 'showMyInvestments']);
@@ -82,8 +64,6 @@ Route::get('investment/getAuctionByInvestmentProduct/{investment_product_id}', [
 Route::post('investment/buyAuctionInvestment', [InvestmentController::class, 'buyAuctionInvestment']);
 Route::post('investment/transferInvestmentBalToSavingsBal', [InvestmentController::class, 'moveInvestmentBalToSavingsBal']);
 
-<<<<<<< HEAD
-=======
 
 //Stock
 Route::get('stock/getStockList', [StockController::class, 'indexListStockItems']);
@@ -101,4 +81,3 @@ Route::post('bills/verifySmartCard', [BillsController::class, 'verifySmartCard']
 Route::post('bills/buyService', [BillsController::class, 'buyService']);
 Route::get('bills/getBillsNetwork', [BillsController::class, 'getBillsNetwork']);
 
->>>>>>> emmybranch
