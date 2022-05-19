@@ -1,3 +1,4 @@
+<!-- this is test -->
 @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2 || Auth::user()->role_id == 3 || Auth::user()->role_id == 4 || Auth::user()->role_id == 5 || Auth::user()->role_id == 6)
 <li class="nav-item ">
     <a href="{{ route('home') }}"
