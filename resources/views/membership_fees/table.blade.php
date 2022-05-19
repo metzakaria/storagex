@@ -13,7 +13,7 @@
         <tbody>
         @foreach($membershipFees as $membershipFee)
             <tr>
-                <td>{{ $membershipFee->member->full_name }}</td>
+                <td>{{ @$membershipFee->member->full_name }}</td>
             <td>{{ $membershipFee->amount }}</td>
             <td>{{ $membershipFee->start_date }}</td>
             <td>{{ $membershipFee->end_date }}</td>
