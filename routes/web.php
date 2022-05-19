@@ -15,11 +15,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-<<<<<<< HEAD
 use App\Http\Controllers\groupMsgSubController;
 
-=======
->>>>>>> emmybranch
 
 
 Auth::routes();
@@ -39,13 +36,10 @@ Route::get('/', [
     HomeController::class, 'index'
 ])->name('home');
 
-<<<<<<< HEAD
 Route::get('/home', [
     HomeController::class, 'index'
 ])->name('home');
 
-=======
->>>>>>> emmybranch
 
 Route::resource('farmers', App\Http\Controllers\FarmerController::class);
 
@@ -111,7 +105,6 @@ Route::resource('debitCards', App\Http\Controllers\DebitCardController::class);
 
 Route::resource('billPayments', App\Http\Controllers\BillPaymentController::class);
 
-<<<<<<< HEAD
 Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
 
 Route::resource('stockup', App\Http\Controllers\StockUpController::class);
@@ -124,8 +117,6 @@ Route::get('group_members/{id}', [groupMsgSubController::class, 'groupMember'])-
 
 Route::get('replies/{id}', [groupMsgSubController::class, 'messageReplies'])->name('replies');
 
-=======
->>>>>>> emmybranch
 Route::get('/generate', function (){
     \Illuminate\Support\Facades\Artisan::call('storage:link');
     echo 'ok';
