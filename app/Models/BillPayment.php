@@ -27,11 +27,7 @@ class BillPayment extends Model
     use HasFactory;
 
     public $table = 'bill_payments';
-<<<<<<< HEAD
     
-=======
-
->>>>>>> emmybranch
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -42,19 +38,16 @@ class BillPayment extends Model
         'member_id',
         'bill_type',
         'amount',
-<<<<<<< HEAD
         'fee',
         'receiver_account',
         'description',
         'is_paid',
         'date_paid',
         'date_created'
-=======
         'receiver_account',
         'description',
         'is_paid',
         'transaction_id',
->>>>>>> emmybranch
     ];
 
     /**
@@ -67,18 +60,15 @@ class BillPayment extends Model
         'member_id' => 'integer',
         'bill_type' => 'string',
         'amount' => 'string',
-<<<<<<< HEAD
         'fee' => 'string',
         'receiver_account' => 'string',
         'description' => 'string',
         'is_paid' => 'boolean',
         'date_paid' => 'date',
         'date_created' => 'datetime'
-=======
         'receiver_account' => 'string',
         'description' => 'string',
         'is_paid' => 'boolean',
->>>>>>> emmybranch
     ];
 
     /**
@@ -98,9 +88,5 @@ class BillPayment extends Model
         'date_created' => 'required'
     ];
 
-<<<<<<< HEAD
     
-=======
-
->>>>>>> emmybranch
 }

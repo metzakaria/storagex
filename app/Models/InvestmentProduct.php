@@ -3,10 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
-<<<<<<< HEAD
-=======
 use DateTime;
->>>>>>> emmybranch
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

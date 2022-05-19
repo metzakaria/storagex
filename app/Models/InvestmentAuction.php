@@ -118,11 +118,7 @@ class InvestmentAuction extends Model
       {
           $array = parent::toArray();
           $array['offer_by'] = $this->investment->member->full_name;
-<<<<<<< HEAD
-          $array['unit_interest'] = $this->investment_product->interest_now();
-=======
           $array['unit_interest'] = round($this->investment_product->interest_now());
->>>>>>> emmybranch
           return $array;
       }
       

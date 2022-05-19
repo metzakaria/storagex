@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @php
 function getGroupName($groupID){
 
@@ -12,12 +11,6 @@ function getGroupName($groupID){
 <div class="col-sm-12">
     {!! Form::label('group_id', 'Group Name:') !!}
     <p>{{ getGroupName($groupMsg->group_id) }}</p>
-=======
-<!-- Group Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('group_id', 'Group Id:') !!}
-    <p>{{ $groupMsg->group_id }}</p>
->>>>>>> emmybranch
 </div>
 
 <!-- Message Field -->
@@ -28,7 +21,6 @@ function getGroupName($groupID){
 
 <!-- Created Menber Field -->
 <div class="col-sm-12">
-<<<<<<< HEAD
     {!! Form::label('created_menber', 'Created Member:') !!}
     <p>{{ $groupMsg->created_menber }}</p>
 </div>
@@ -37,9 +29,3 @@ function getGroupName($groupID){
 
 
 
-=======
-    {!! Form::label('created_menber', 'Created Menber:') !!}
-    <p>{{ $groupMsg->created_menber }}</p>
-</div>
-
->>>>>>> emmybranch

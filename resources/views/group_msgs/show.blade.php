@@ -27,7 +27,6 @@
             </div>
 
         </div>
-<<<<<<< HEAD
         <hr>
 
         <div class="card">
@@ -69,7 +68,5 @@
 
             </div>
         </div>
-=======
->>>>>>> emmybranch
     </div>
 @endsection

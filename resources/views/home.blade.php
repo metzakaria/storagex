@@ -17,11 +17,6 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-<<<<<<< HEAD
-
-=======
-   
->>>>>>> emmybranch
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -30,22 +25,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-<<<<<<< HEAD
                 <h3 id="farmer"></h3>
-=======
-                <h3>150</h3>
->>>>>>> emmybranch
 
                 <p>Farmers </p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-<<<<<<< HEAD
               {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
-=======
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
->>>>>>> emmybranch
             </div>
           </div>
           <!-- ./col -->
@@ -53,22 +40,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-<<<<<<< HEAD
                 <h3 id="member"></h3>
-=======
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
->>>>>>> emmybranch
 
                 <p>Members</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-<<<<<<< HEAD
               {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
-=======
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
->>>>>>> emmybranch
             </div>
           </div>
           <!-- ./col -->
@@ -76,24 +55,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-<<<<<<< HEAD
                 <h3 id="receipt"></h3>
 
                 <p>Electronic Receipts</p>
-=======
-                <h3>44</h3>
-
-                <p>Elec. Receipts</p>
->>>>>>> emmybranch
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-<<<<<<< HEAD
               {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
-=======
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
->>>>>>> emmybranch
             </div>
           </div>
           <!-- ./col -->
@@ -101,22 +70,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-<<<<<<< HEAD
                 <h3 id="investor"></h3>
-=======
-                <h3>65</h3>
->>>>>>> emmybranch
 
                 <p>Investors</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-<<<<<<< HEAD
               {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
-=======
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
->>>>>>> emmybranch
             </div>
           </div>
           <!-- ./col -->
@@ -131,11 +92,6 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> emmybranch
                   </div>
                 </div>
               </div>
@@ -148,45 +104,10 @@
                       <th>User</th>
                       <th>Date</th>
                       <th>Status</th>
-<<<<<<< HEAD
                     </tr>
                   </thead>
                   <tbody id="member_table">
 
-=======
-                      <th>Reason</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
->>>>>>> emmybranch
                   </tbody>
                 </table>
               </div>
@@ -200,7 +121,6 @@
     </section>
 </div>
 @endsection
-<<<<<<< HEAD
 
 @push('page_scripts')
     <script type="text/javascript">
@@ -243,5 +163,3 @@
 
 
 @endpush
-=======
->>>>>>> emmybranch
