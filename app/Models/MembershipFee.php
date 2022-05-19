@@ -7,7 +7,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Class MembershipFee
+ * Class MembershipFee c
  * @package App\Models
  * @version November 8, 2021, 3:26 pm UTC
  *
