@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +12,7 @@
         </div>
     </section>
 
-    <div class="content px-3">
+    <div class="content px-3" >
 
         @include('adminlte-templates::common.errors')
 
